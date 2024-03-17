@@ -21,8 +21,25 @@ def get_country(domain_country_list, headers):
         for a_tag in doc('.countrylist a'):
             a_tag = pq(a_tag)
             country_name = a_tag.text()
-            href_value = a_tag.attr('href')
-            countries_info.append({'name': country_name, 'href': href_value})
+            href_country = a_tag.attr('href')
+            countries_info.append({'name': country_name, 'href_country': href_country})
         return countries_info
     else:
-        print(f"Ocorreu algum erro, segue código para identifica{status}")
+        print(f"Ocorreu o seguinto erro {status} em sua requisição.")
+
+# função para pegar lista de marcas por país e suas urls
+def get_brand(domain_each_country, headers):
+    r = requests.get(domain_each_country, headers=headers)
+    status = r.status_code
+    if status == 200:
+        html_content = r.text
+        doc = pq(html_content)
+        brand_list = []
+        for a_tag in doc('.designerlist a'):
+            a_tag = pq(a_tag)
+            brand_name = a_tag.text()
+            href_brand = a_tag.attr('href')
+            brand_list.append({'brand_name': brand_name, 'href_brand': href_brand})
+        return brand_list
+    else:
+        print(f"Ocorreu o seguinto erro {status} em sua requisição.")
