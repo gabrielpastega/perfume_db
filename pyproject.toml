@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "perfume-db"
+version = "0.1.0"
+description = "Criação de um database de perfumes a partir de um webscrapping"
+authors = ["gabrielpastega <gabrielpbreis@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+selenium = "^4.18.1"
+pyquery = "^2.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
